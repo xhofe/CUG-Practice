@@ -1,0 +1,5 @@
+<library path="lib/libgenetic_v2_lib">
+  <class name="Genetic_planner/GeneticPlannerROSV2" type="Genetic_planner::GeneticPlannerROSV2" base_class_type="nav_core::BaseGlobalPlanner">
+    <description>This is genetic global planner plugin by Xhofe.</description>
+  </class>
+</library>

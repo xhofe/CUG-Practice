@@ -1,0 +1,29 @@
+<launch>
+  <!-- Map server -->
+  <arg name="map_file" default="$(find slam_sim_demo)/maps/Software_Museum.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!--genetic-->
+  <param name="population_size" value="100"/>
+  <param name="cross_rate" value="0.4"/>
+  <param name="mutation_rate" value="0.2"/>
+  <param name="generation_num" value="200"/>
+  <param name="step_len" value="50"/>
+  <param name="mutation_step_len" value="5"/>
+  <!--<param name="" value="5.0"/>-->
+
+  <!-- Localization -->
+  <arg name="initial_pose_x" default="5.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="-2.0"/>
+  <arg name="custom_amcl_launch_file" default="$(find navigation_sim_demo)/launch/include/robot_amcl.launch.xml"/> 
+
+  <include file="$(arg custom_amcl_launch_file)">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+  </include>
+
+  <!-- Move base -->
+ <include file="$(find navigation_sim_demo)/launch/include/move_base.launch.xml"/>
+</launch>
