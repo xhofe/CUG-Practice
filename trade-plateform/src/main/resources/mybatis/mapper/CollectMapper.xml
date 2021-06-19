@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hh.mapper.CollectMapper">
+
+    <select id="getCollectsByUserId" resultType="collect">
+        select *
+        from collect
+        where user_id=#{userId};
+    </select>
+
+    <delete id="deleteCollectById" parameterType="int">
+        delete from collect
+        where collect_id=#{id};
+    </delete>
+
+    <insert id="addCollect" parameterType="collect">
+        insert into collect (user_id, goods_id,count,checked)
+        values (#{userId},#{goodsId},#{count},#{checked});
+    </insert>
+
+    <select id="getCollectById" parameterType="int" resultType="collect">
+        select *
+        from collect
+        where collect_id=#{id};
+    </select>
+
+    <update id="updateCollect" parameterType="collect">
+        update collect
+        <set>
+            <if test="userId!=null">
+                user_id=#{userId},
+            </if>
+            <if test="goodsId!=null">
+                goods_id=#{goodsId},
+            </if>
+            <if test="count!=null">
+                count=#{count},
+            </if>
+            <if test="checked!=null">
+                checked=#{checked}
+            </if>
+        </set>
+        where collect_id=#{collectId}
+    </update>
+
+</mapper>

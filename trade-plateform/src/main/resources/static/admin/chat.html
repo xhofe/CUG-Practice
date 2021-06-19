@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="include/title.js"></script>
+    <style type="text/css">
+        .talk_con {
+            width: 90%;
+            height: 500px;
+            /*border: 1px solid #666;*/
+            margin: 50px auto 0;
+            /*background: #f9f9f9;*/
+        }
+
+        .talk_show {
+            width: 100%;
+            height: 420px;
+            border: 1px solid #3dc1dd;
+            /*background: #fff;*/
+            margin: 10px auto 0;
+            overflow: auto;
+        }
+
+        .talk_input {
+            width: 800px;
+            margin: 10px auto 0;
+        }
+
+        .whotalk {
+            width: 80px;
+            height: 30px;
+            float: left;
+            outline: none;
+        }
+
+        .talk_word {
+            width: 420px;
+            height: 26px;
+            padding: 0;
+            float: left;
+            margin-left: 10px;
+            outline: none;
+            text-indent: 10px;
+        }
+
+        .talk_sub {
+            width: 56px;
+            height: 30px;
+            float: left;
+            margin-left: 10px;
+        }
+
+        .atalk {
+            margin: 10px;
+        }
+
+        .atalk span {
+            display: inline-block;
+            background: #0181cc;
+            border-radius: 10px;
+            color: #fff;
+            padding: 5px 10px;
+        }
+
+        .btalk {
+            margin: 10px;
+            text-align: right;
+        }
+
+        .btalk span {
+            display: inline-block;
+            background: #ef8201;
+            border-radius: 10px;
+            color: #fff;
+            padding: 5px 10px;
+        }
+        .first {
+            width: 20%;
+            float:left;
+            padding-top: 10px;
+            padding-left: 10px;
+            /*border: 1px solid #3B6273;*/
+        }
+        .second {
+            width: 70%;
+            float:left;
+            /*border: 1px solid #3B6273;*/
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <script type="text/javascript" src="include/side.js"></script>
+    <script type="text/javascript" src="include/header.js"></script>
+    <script type="text/javascript" src="include/footer.js"></script>
+
+    <div class="layui-body">
+
+        <div class="first">
+            <ul class="layui-nav layui-nav-tree" lay-filter="demo" id="user-list">
+
+            </ul>
+        </div>
+        <div class="second">
+            <div class="talk_con">
+                <div class="talk_show" id="words">
+                </div>
+                <div class="talk_input">
+                    <div class="layui-form-item">
+                        <!--                <label for="name" class="layui-form-label">社群名称</label>-->
+                        <div class="layui-inline">
+                            <div class="layui-input-inline" style="width: 650px">
+                                <input type="text" id="talkwords" name="name" value="" required lay-verify="required"
+                                       placeholder="请输入您的回答" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline" style="width: 90px">
+                                <!--                        <button class="layui-btn" lay-filter="*" lay-submit>立即提交</button>-->
+                                <input type="button" value="发送" class="layui-btn layui-btn-normal" id="talksub">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    layui.use(['jquery', 'element', 'form'], function () {
+        var $ = layui.jquery, form = layui.form,element=layui.element;
+        var Words = document.getElementById("words");
+        var TalkWords = document.getElementById("talkwords");
+        var TalkSub = document.getElementById("talksub");
+
+        let userId=0;
+        function receiveMessage(str){
+            $("#words").append('<div class="btalk"><span>客户 :' + str + '</span></div>');
+        }
+
+        function sendMessage(str){
+            $("#words").append('<div class="atalk"><span>客服 :' + str + '</span></div>');
+        }
+
+        $.get("api/message/users",function (res) {
+            if (res.code===200){
+                let users=res.data;
+                for (let i = 0; i < users.length; i++) {
+                    $('#user-list').append("<li class='layui-nav-item user' userId='"+users[i].userId+"'>"+users[i].userName+"</li>");
+                }
+                $('.user').click(function () {
+                    userId=$(this).attr('userId');
+                    console.log(userId);
+                });
+            }else {
+                layer.msg(res.msg);
+            }
+        });
+
+        TalkSub.onclick = function () {
+            //定义空字符串
+            if (userId===0){
+                layer.msg("选择一个用户");
+                return;
+            }
+            var str = "";
+            if (TalkWords.value === "") {
+                // 消息为空时弹窗
+                layer.msg('消息不能为空');
+                return;
+            }
+            $.post("api/message/sendAdmin",JSON.stringify({message:TalkWords.value,buyId:userId}),function (res) {
+                if (res.code===200){
+                    sendMessage(TalkWords.value);
+                }else {
+                    layer.msg(res.msg);
+                }
+            });
+            Words.scrollTop = Words.scrollHeight;
+        };
+
+        function updateMessage() {
+            if (userId!==0){
+                $.get("api/message/list",function (res) {
+                    if (res.code===200){
+                        $("#words").html("");
+                        let messages=res.data;
+                        for (let i=0;i<messages.length;i++){
+                            let message=messages[i];
+                            if (message.send===0){
+                                sendMessage(message.message);
+                            }else {
+                                receiveMessage(message.message);
+                            }
+                        }
+                    }else {
+                        layer.msg(res.msg);
+                    }
+                });
+                Words.scrollTop = Words.scrollHeight;
+            }
+        }
+        updateMessage();
+
+        let intervalId=self.setInterval(updateMessage,3000);
+
+        $('.inner-cont2 a').each(function (i, item) {
+            var url = window.location.pathname;
+            var href = $(item).attr('href');
+            if (url.search(href) !== -1) {
+                $(item).addClass('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

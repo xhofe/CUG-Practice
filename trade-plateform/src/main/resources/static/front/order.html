@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="include/title.js"></script>
+</head>
+<body>
+<div id="pay" style="display: none;"></div> <!-- 支付跳转 -->
+<script type="text/javascript" src="include/site-nav.js"></script>
+<script type="text/javascript" src="include/header.js"></script>
+<div class="content content-nav-base commodity-content">
+    <script type="text/javascript" src="include/main-nav.js"></script>
+    <div class="commod-cont-wrap">
+        <div class="commod-cont w1200 layui-clear">
+            <table id="table" lay-filter="table"></table>
+        </div>
+
+        <div id="modal" style="display: none;">
+            <div style="width: 500px; margin: 0 auto; padding: 20px;">
+                <table id="table2" lay-filter="table2"></table>
+                <ul class="layui-timeline">
+                    <script type="text/html" id="timeline">
+                        {{# layui.each(d, function(index, item){ }}
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <strong class="layui-timeline-title">{{ item.status }}</strong>
+                                <p>{{ item.time }}</p>
+                            </div>
+                        </li>
+                        {{# }); }}
+                    </script>
+                    <div id="timelineView"></div>
+                </ul>
+            </div>
+        </div>
+        <div id="comment" style="display: none">
+            <!--            <form class="layui-form">-->
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">评价:</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入评价内容" class="layui-textarea" id="comment-content"></textarea>
+                </div>
+            </div>
+            <!--<div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">编辑器</label>
+              <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+              </div>
+            </div>-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button id="submit" type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">提交评价</button>
+                    <!--                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                </div>
+            </div>
+            <!--            </form>-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="include/footer.js"></script>
+<script type="text/html" id="toolbarTpl">
+    <div class="layui-inline">
+        <select name="select" lay-filter="statusSearch" id="select">
+            <option value="">所有订单</option>
+            <option value="0">待付款</option>
+            <option value="1">待发货</option>
+            <option value="2">待收货</option>
+            <option value="3">已取消</option>
+            <option value="4">已完成</option>
+            <option value="5">退款申请</option>
+            <option value="6">退款成功</option>
+        </select>
+    </div>
+</script>
+<script type="text/html" id="barTpl">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">详情</a>
+    {{# if (d.status == '待付款') { }}
+    <a class="layui-btn layui-btn-success layui-btn-xs" lay-event="pay">付款</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="cancel">取消</a>
+    {{# } else if (d.status == '待收货') { }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="receive">收货</a>
+    {{# } else if (d.status == '待发货') { }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refund">退款</a>
+    {{# } else if (d.status == '已完成') { }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="comment">评价</a>
+    {{# } }}
+</script>
+<script type="text/html" id="iconTpl">
+    <img src="{{ d.icon }}" width="50px" height="50px">
+</script>
+<script type="text/javascript" src="js/util.js"></script>
+<script>
+    layui.use(['jquery', 'form', 'table', 'laytpl'], function () {
+        var $ = layui.$, form = layui.form, table = layui.table, laytpl = layui.laytpl;
+        let status = ['待付款', '待发货', '待收货', '已取消', '已完成', '退款申请', '退款成功'];
+        let selectStatus;
+        form.on('select(statusSearch)', function (data) {
+            selectStatus = data.value;
+            table.reload('table', {
+                // url: 'seller/order/list',
+                page: {
+                    curr: 1
+                },
+                where: {
+                    status: selectStatus
+                    // key:{
+                    //     status: status[parseInt(selectStatus)]
+                    // }
+                }
+            });
+            $("#select").val(selectStatus);
+        });
+
+        table.render({
+            elem: '#table',
+            url: 'api/order/list',
+            page: true,
+            size: 'lg',
+            toolbar: '#toolbarTpl', // 'default'
+            id: "table",
+            parseData: function (res) {
+                $(res.data).each(function (i, d) {
+                    d.status = status[d.status];
+                    d.time = new Date(d.time).format("yyyy-MM-dd hh:mm:ss");
+                });
+                // res.count=res.data.length;
+                // console.log(res);
+                return res;
+            },
+            response: {
+                statusCode: 200
+            },
+            cols: [[
+                {field: 'orderId', title: 'ID', width: 100, align: 'center', sort: true, edit: true},
+                {field: 'name', title: '收货人'},
+                {field: 'address', title: '收货地址'},
+                {field: 'cost', title: '总金额'},
+                {field: 'status', title: '订单状态'},
+                {field: 'time', title: '创建时间'},
+                {field: 'trackingNumber', title: '快递单号'},
+                // {field: 'updateTime', title: '修改时间'},
+                {fixed: 'right', title: '操作', width: 160, toolbar: '#barTpl'}
+            ]]
+        });
+
+        // 监听行工具事件
+        table.on('tool(table)', function (obj) {
+            switch (obj.event) {
+                case 'detail':
+                    $.get('api/order/info/' + obj.data.orderId, function (res) {
+                        let detailData = res.data.detail;
+                        console.log(detailData);
+                        // var timelineData = res.data.timeline;
+                        layer.open({
+                            type: 1, // 0：信息框，默认 1：页面层 2：iframe层 3：加载层 4：tips层
+                            title: '订单详情',
+                            content: $('#modal'),
+                            // area: ['800px', 200 + 55 * (detailData.length + timelineData.length) + 'px'],
+                            area: ['800px', 800 + 55 * (detailData.length) + 'px'],
+                            shadeClose: true,
+                            success: function () {
+                                table.render({
+                                    elem: '#table2',
+                                    data: detailData,
+                                    size: 'lg',
+                                    cols: [[
+                                        {field: 'id', title: 'ID', width: 100, align: 'center', sort: true, edit: true},
+                                        {field: 'icon', title: '图标', width: 100, align: 'center', templet: '#iconTpl'},
+                                        {field: 'name', title: '名称'},
+                                        {field: 'price', title: '价格'},
+                                        {field: 'quantity', title: '数量'},
+                                    ]]
+                                });
+                                // laytpl(timeline.innerHTML).render(timelineData, function (html) {
+                                //     $('#timelineView').html(html);
+                                // });
+                            }
+                        });
+                    });
+                    break;
+                case 'pay':
+                    $.post('api/alipay/pay/' + obj.data.orderId, function (res) {
+                        console.log(res);
+                        $('#pay').html(res); // 支付跳转
+                    }, 'html');
+                    break;
+                case 'cancel':
+                    layer.confirm('确认取消订单？', function (index) {
+                        $.post('api/order/cancel/' + obj.data.orderId, function (res) {
+                            layer.msg(res.msg);
+                            if (res.code === 200) {
+                                table.reload('table', {page: {curr: $(".layui-laypage-em").next().html()}});
+                            }
+                        });
+                    });
+                    break;
+                case 'receive':
+                    layer.confirm('是否确认收货？', function (index) {
+                        $.post('api/order/receive/' + obj.data.orderId, function (res) {
+                            layer.msg(res.msg);
+                            if (res.code === 200) {
+                                table.reload('table', {page: {curr: $(".layui-laypage-em").next().html()}});
+                            }
+                        });
+                    });
+                    break;
+                case 'refund':
+                    layer.confirm('确认申请退款？', function (index) {
+                        $.post('api/order/refund/' + obj.data.orderId, function (res) {
+                            layer.msg(res.msg);
+                            if (res.code === 200) {
+                                table.reload('table', {page: {curr: $(".layui-laypage-em").next().html()}});
+                            }
+                        });
+                    });
+                    break;
+                case 'comment':
+                    layer.open({
+                        type: 1,
+                        title: '评价商品',
+                        content: $('#comment'),
+                        area: 'auto'
+                    });
+                    $('#submit').click(function () {
+                        let submit_data = {
+                            orderId: obj.data.orderId,
+                            comment: $('#comment-content').val()
+                        };
+                        $.post("api/goods/comments/add", JSON.stringify(submit_data), function (res) {
+                            if (res.code === 200) {
+                                layer.msg("评价成功");
+                            } else {
+                                layer.msg(res.msg);
+                            }
+                        });
+                    });
+            }
+        });
+
+        $('.inner-cont2 a').each(function (i, item) {
+            var url = window.location.pathname;
+            var href = $(item).attr('href');
+            if (url.search(href) !== -1) {
+                $(item).addClass('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+server:
+  port: 7980
+spring:
+  datasource:
+    url: jdbc:mysql://ali.xhofe.top:3306/personal-mall?serveTimezone=UTC&useUnicode =true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: personal-mall
+    password: WHLSz8mRb4p2ZEK2
+  profiles:
+    active: default
+  mail:
+    host: smtp.qq.com
+    password: llhenytkalabbbhi
+    username: 709124735@qq.com
+    properties:
+      mail.smtp.socketFactory.fallback: true
+      mail.smtp.starttls.enable: trye
+      mail.smtp.ssl.enable: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.hh.pojo
+logging:
+  file:
+    path: log
+  level:
+    root: info
+#  config-location: classpath:mybatis/mybatis-config.xml
+jwt:
+  secret: trade-plateform
+  expiration: 604800
+
+file:
+  img:
+    path: /trade-plateform-img/
+
+alipay:
+  appID: 2016102200735789
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do
+  appPrivateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCd38a+ds0agunFLa0DUev1xNay2NGmEbanmrs+33B6qTL1VdjnfMewjuuwLoZ20ilvfDnKbEe1LQPHH4H5UKLsf7m7T4u3Swoc7vNq6MAwT9jIK/curoABwXz5a+8e2wOQ4aAFjroA4dkUeNu90FnA0RJpnn53AkpTGB+2PYFaA0sThew4BxAR7GXTAUOLMoO12B+JR2fP8qLMMr/dj4hQFAeJBNqKxdXvyQrA0oSfFiHuH0CDXZPlJxzbQuz+VODLkwWvsS12YvSwBpMmkCKfQfAZjCJPKCclkMH8n3KnMh/5t50WJ0Lps8gZp5kkytZ7BJeYYdwlQ04k6lHXZWo9AgMBAAECggEADqsA4ydUjRcGszw4K+vLmY0NSZade+l/Z/kXVpMZ9zuLMYIlYfSU9RGCUl8wPQ/vq50GHYmL7AhfpnuF7u0QBhsj3YRZfdEqAmAtG4y+dn6krIxxLdQmroMUonPlxp8gqLBd1sZY/8X8DkvgVrVp8WE7bba9Fz+OOkQuhhcW0o8AZXsp6xhI2FGHuCilJ0HuzhyPWvpfXDqpsRhVpiYEnFw3tZP4gnFuVaYqQimXAE26VSB/TRYynBETqcz3Si9IITg/8f6vCP8XAmWvgkSeeiXg6oXLMeOTbZq0Nf6gSuUKUvqpSS0w3jhGjrnvP6BNJwltUm4/CFqIvg8gy9J4oQKBgQDPiHifqcI5H8pc/bdgDBxh6gLaymre/+4xdJuS2bXYnFzqHb4jAADvx7DIg7Kov1fx2eAUYwg0jtAE03caXwbtt2uBYW4DB/f/uB5QXn791518LyvQyvemYQF4RuyXsZZOhWiPyjyTXV0WEeSwvi0oS4SJ054UlOz2uTBkmUb1SQKBgQDCvmesvUO0/eOkHHPAGazPxLZjqqZz7xYP5YbU9OWi/Ta2bBaoeSfV7LWA6UFGtbYWu7YYFtpTQoJTUPd1qKfzT1XB2K8BPhroH/HvSTe/+HB8I5vnv9uwWlp9WezyWwCgz0pfv+96DVzX07D/oIcyWse42QFv68HMp2QJ9csxVQKBgC6c+HrkJjuuaEV6tzVbgwR7CykZTefIlDeHeWoCfFWqyTPMemhiF9PDhnGDIx3D3Hz18t6hX7ZuXUq4NIg3z9aU3BCzUYJcx9coA6cJknxxcW3zKmQ7MmSsZSgexgVMXfZFALdLNU/kKIRMgJEyJfJnA93xKhB1YsQH1FbEFqwBAoGAJ+nOZeEEl3vRxDjwoFaizJKMrzCynOBLrUZltA/dYOJ07D6LBkyOlZHGQX2NG2jywQYH9Df610WyYFEf5sWCZqPD987pT1/jM+AYPerLulS4+ThzI7R22lYqZbagkauFHXBe1fEIrANBHBsPE9Va4D8q3//aA45WUhOctU3jL2ECgYEAt1N9R6kOYWhxFfHsFYAtjOd1MHErzZJOGQe/s7tax96mAwm+SExPs+kBvIUL4GSFr1z3cwxE9d7NDAVd0ay4LrMWput0aQCHsHqX6W9CGB3XMv2JYiqQ2fiU3/pX/ffbeRq0ctkdTNcu9oE8/foy9QuLFEeA3NxT0Vajlpl2y0U=
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArlCw/9YrcC7Arfa+E9aB989gUBDZKXClMsXb7+8Ta9PKnkeX1A3hhc4iBrvhZniFMOK3t9W4ubp87iRi0SIlzF44g6esBCehMUWpVrAZv1fu6Ivmx5TD8wjQjvFVXsrSb/9BZ+qKJqnRro1VMfqJECF99arPfz9CqOJJbckShop0/DAGPt0AWyccv4zoxmZuQydeERMhKMJCl6PPVb3hUf3EjSKaJlPAgMWNrbcN0uMLbtpBAeOp9zcEMfm/MUJyYfPvpQKdTk23560o0c1Ytjdfr9v98RGqd4Zf/L/OuGSNB5aFrx/8KFoY/Bi6ZCFAlr6LhpHPAmvuCfUvSkxPjQIDAQAB
+  notifyUrl: https://personal-mall.jxdgogogo.xyz/api/alipay/notify
+  returnUrl: https://personal-mall.jxdgogogo.xyz/front/order.html
+
+#user:
+#  dir: D:\OneDrive\Desktop\
+#  file:
+#    path: D:\OneDrive\Desktop\trade-plateform\src\main\resources\static\admin\img\
+#    fileName: springboot.jpg

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hh.mapper.OrderMapper">
+
+    <select id="getOrdersByUserId" parameterType="int" resultType="order">
+        select *
+        from `order`
+        where buy_user_id=#{userId};
+    </select>
+
+    <insert id="addOrder" parameterType="order">
+        insert into `order` (goods_id, buy_user_id, name, address, time, cost,status,tracking_number)
+        values (#{goodsId},#{buyUserId},#{name},#{address},#{time},#{cost},#{status},#{trackingNumber});
+    </insert>
+
+    <delete id="deleteOrder" parameterType="int">
+        delete from `order`
+        where order_id=#{orderId};
+    </delete>
+
+    <select id="getOrderById" parameterType="int" resultType="order">
+        select *
+        from `order`
+        where order_id=#{id};
+    </select>
+
+    <update id="updateOrder" parameterType="order">
+        update `order`
+        <set>
+            <if test="goodsId!=null">
+                goods_id=#{goodsId},
+            </if>
+            <if test="buyUserId!=null">
+                buy_user_id=#{buyUserId},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="address!=null">
+                address=#{address},
+            </if>
+            <if test="time!=null">
+                time=#{time},
+            </if>
+            <if test="cost!=null">
+                cost=#{cost},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+            <if test="trackingNumber!=null">
+                tracking_number=#{trackingNumber}
+            </if>
+        </set>
+        where order_id=#{orderId};
+    </update>
+
+    <select id="getAllOrders" resultType="order">
+        select *
+        from `order`;
+    </select>
+</mapper>

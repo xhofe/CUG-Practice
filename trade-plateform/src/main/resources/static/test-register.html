@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
+</head>
+<body style="width: 100%;height: 100%;">
+<div style="margin-top: 15%;">
+    <div class="layui-main" style="width: 700px;">
+        <h1 style="text-align: center">请输入注册信息</h1>
+        <form class="layui-form layui-form-pane">
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱：</label>
+                <div class="layui-input-block">
+                    <input id="email" type="email" name="username" class="layui-input" lay-verify="required"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码：</label>
+                <div class="layui-input-block">
+                    <input id="password" type="password" name="password" class="layui-input" lay-verify="required"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱验证码：</label>
+                <div class="layui-input-block">
+                    <input id="checkCode" type="text" name="checkCode" class="layui-input" lay-verify="required"/>
+                    <button id="sendCheckCode" type="button" class="layui-btn layui-btn-normal">获取验证码</button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="register">确认</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use("form",function () {
+        var form = layui.form;
+        var $ = layui.$;
+
+        form.on("submit(register)",function (data) {
+            var inputCheckCode = $("#checkCode").val();
+            if (inputCheckCode == checkCode){
+                $.ajax({
+                    url:"/register",
+                    type:"POST",
+                    data:data.field,
+                    async:false,
+                    success:function (text) {
+                        if ("ok" == text){
+                            layer.alert("注册成功",function () {
+                                window.location.href = "index.html";
+                            });
+                        }else{
+                            layer.alert("注册失败");
+                        }
+                    }
+                });
+            } else{
+                layer.msg("验证码输入错误");
+            }
+            return false;
+        });
+
+        //验证码
+        var checkCode = "";
+
+        $("#sendCheckCode").click(function () {
+            var email = $("#email").val();
+            if (email == null || email == ""){
+                layer.msg("请输入邮箱！！！");
+                return;
+            }
+            var index = layer.open({
+                type:3,
+                content:"邮件发送中..."
+            });
+
+            $.ajax({
+                url:"/getCheckCode?email="+email,
+                type:"get",
+                success:function (text) {
+                    if (text != null && text != ""){
+                        layer.close(index);
+                        layer.msg("已发送");
+                        checkCode = text;
+                        countDown();
+                    } else{
+                        layer.alert("获取失败，请重新获取")
+                    }
+                }
+            });
+        });
+
+        var maxTime = 60;
+        function countDown(){
+            if (maxTime == 0){
+                checkCode = "";
+                $("#sendCheckCode").removeClass("layui-btn-disabled");
+                $("#sendCheckCode").removeAttr("disabled")
+                $("#sendCheckCode").html("获取验证码");
+                maxTime = 60;
+            }else{
+                $("#sendCheckCode").attr("disabled","disabled");
+                $("#sendCheckCode").addClass("layui-btn-disabled");
+                form.render();
+                $("#sendCheckCode").html(maxTime+"秒后重新获取");
+                maxTime--;
+                setTimeout(countDown,1000);
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

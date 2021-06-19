@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <script type="text/javascript" src="include/title.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="include/site-nav.js"></script>
+<script type="text/javascript" src="include/header.js"></script>
+<div class="content content-nav-base datails-content">
+    <script type="text/javascript" src="include/main-nav.js"></script>
+    <div class="data-cont-wrap w1200">
+        <div class="crumb">
+            <a href="javascript:;">首页</a>
+            <span>></span>
+            <a href="javascript:;">所有商品</a>
+            <span>></span>
+            <a href="javascript:;">产品详情</a>
+        </div>
+        <div class="product-intro layui-clear">
+            <div class="preview-wrap">
+                <a href="javascript:;"><img id="firstImg" style="max-height: 400px;max-width: 400px" src=""></a>
+            </div>
+            <div class="itemInfo-wrap">
+                <div class="itemInfo">
+                    <div class="title">
+                        <h4 id="name">goodsName </h4>
+                        <span><i class="layui-icon layui-icon-rate-solid"></i>销量:<b id="pop"></b></span>
+                    </div>
+                    <div class="summary">
+                        <p class="reference"><span>参考价</span>
+                            <del id="price">￥price</del>
+                        </p>
+                        <p class="activity"><span>活动价</span><strong class="price"><i>￥</i><span
+                                id="secondPrice">secondPrice</span></strong></p>
+                        <!--                        <p class="address-box"><span>送&nbsp;&nbsp;&nbsp;&nbsp;至</span><strong class="address">江西&nbsp;&nbsp;南昌&nbsp;&nbsp;东湖区</strong></p>-->
+                        <p class="address-box"><span>库&nbsp;&nbsp;&nbsp;&nbsp;存</span><strong id="num">num</strong></p>
+                    </div>
+                    <div class="choose-btns">
+                        <button id="buy" class="layui-btn layui-btn-primary purchase-btn">立刻购买</button>
+                        <button id="collect" class="layui-btn  layui-btn-danger car-btn">
+                            <i class="layui-icon layui-icon-cart-simple"></i><b id="hasCollect">收藏</b>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-clear">
+            <div class="aside">
+                <h4>热销推荐</h4>
+                <div class="item-list" id="item-list">
+<!--                    <div class="item">-->
+<!--                        <img src="">-->
+<!--                        <p><span>title</span><span class="pric">￥price</span></p>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="detail">
+                <h4>详情</h4>
+                <div class="item">
+                    <div id="imgs">
+
+                    </div>
+                    <div id="introduce">
+                        <p>这是一件商品</p>
+                    </div>
+                </div>
+                <h4>评论</h4>
+                <div class="item" id="comments">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="include/footer.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script>
+    layui.use(['jquery', 'element', 'laytpl', 'laypage'], function () {
+        var $ = layui.$;
+
+        let hasCollect = false;
+        let collectId;
+        let goodsId = getQueryVariable("id");
+        // 获取商品信息
+        $.get('api/goods/goodsInfo?id=' + goodsId, function (res) {
+            if (res.code === 200) {
+                //Success
+                $('#name').text(res.data.goodsName);
+                $('#pop').text(res.data.pop);
+                $('#price').text('￥' + res.data.price);
+                $('#secondPrice').text(res.data.secondPrice);
+                $('#num').text(res.data.num);
+
+                let imgs = res.data.imgurl.split(';');
+                $('#firstImg').attr('src', imgs[0]);
+
+                for (let i = 0; i < imgs.length; i++) {
+                    $('#imgs').append("<img style='max-width: 770px' src=" + imgs[i] + ">");
+                }
+                $('#introduce').append(res.data.introduce);
+            } else {
+                layer.msg(res.msg);
+            }
+        });
+
+        // 获取商品评论
+        $.get('api/goods/comments/' + goodsId, function (res) {
+            // console.log(res);
+            if (res.code === 200) {
+                let comments = res.data;
+                for (let i = 0; i < comments.length; i++) {
+                    let time = new Date(comments[i].time).format("yyyy-MM-dd hh:mm:ss");
+                    $('#comments').append("<div><p>" + time + "</p><b>" + comments[i].comment + "</b></div><br>");
+                }
+            } else {
+                layer.msg(res.msg);
+            }
+        });
+
+        //是否收藏
+        $.get('api/goods/collect/has?goodsId=' + goodsId, function (res) {
+            // console.log(res);
+            if (res.code === 200) {
+                hasCollect = res.data.has;
+                if (hasCollect) {
+                    $('#hasCollect').text("取消收藏");
+                    collectId = res.data.collectId;
+                }
+            } else {
+                // layer.msg(res.msg);
+            }
+        });
+
+        $.get('api/goods/recommend', function (res) {
+            if (res.code === 200) {
+                let goods = res.data;
+                for (let i = 0; i < goods.length; i++) {
+                    $("#item-list").append("" +
+                        "<div class=\"item\" data-id='"+goods[i].goodsId+"'>\n" +
+                        "     <img class='layui-anim' style='width:280px;height:280px;border-bottom: 1px solid #eaeaea;' data-anim=\"layui-anim-scale\" src=\""+goods[i].imgurl+"\">\n" +
+                        "     <p><span>"+goods[i].goodsName+"</span><span class=\"pric\">￥"+goods[i].secondPrice+"</span></p>\n" +
+                        "</div>");
+                }
+                $('.layui-anim').on('click', function () {
+                    var othis = $(this), anim = othis.data('anim');
+                    othis.removeClass(anim);
+                    setTimeout(function () {
+                        othis.addClass(anim);
+                    });
+                    var id = $(this).parents('.item').attr("data-id");
+                    // $.post('cart', {id: id, quantity: 1}, function (res) {
+                    //     if (res.code === 200) {
+                    //         // ok
+                    //     }
+                    // });
+                    window.location.href = 'goods.html?id=' + id;
+                });
+            } else {
+                layer.msg(res.msg);
+            }
+        });
+
+        $('#buy').click(function () {
+            $.get('api/order/buyOne/'+goodsId,function (res) {
+                if (res.code===200){
+                    layer.msg("下单成功，前往订单中心支付");
+                }else {
+                    layer.msg(res.msg);
+                }
+            });
+        });
+
+        $('#collect').click(function () {
+            if (hasCollect) {
+                $.get('api/goods/collect/cancel?collectId=' + collectId, function (res) {
+                    if (res.code === 200) {
+                        layer.msg("取消收藏成功");
+                        $('#hasCollect').text("收藏");
+                        hasCollect = false;
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                })
+            } else {
+                $.get('api/goods/collect/add?goodsId=' + goodsId, function (res) {
+                    if (res.code === 200) {
+                        layer.msg("收藏成功");
+                        $('#hasCollect').text("取消收藏");
+                        hasCollect = true;
+                        collectId = res.data;
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                })
+            }
+        });
+
+        function getQueryVariable(variable) {
+            var search = layui.url().search;
+            if (search.hasOwnProperty(variable)) return search[variable];
+            else return '';
+        }
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hh.mapper.MessageMapper">
+
+    <select id="getMessageByIds" resultType="message">
+        select *
+        from message
+        where (buy_id=${buyId} and sell_id=${sellId});
+    </select>
+
+    <insert id="addMessage" parameterType="message">
+        insert into message (buy_id, sell_id, message, time,send)
+        values (#{buyId},#{sellId},#{message},#{time},#{send});
+    </insert>
+
+    <select id="getMessageByUserId" parameterType="int" resultType="message">
+        select *
+        from message
+        where buy_id=#{userId};
+    </select>
+
+    <select id="getUserIds" parameterType="int" resultType="int">
+        select distinct buy_id
+        from message
+        where sell_id=#{adminId};
+    </select>
+</mapper>

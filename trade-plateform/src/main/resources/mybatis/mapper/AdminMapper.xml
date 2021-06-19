@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hh.mapper.AdminMapper">
+    <select id="getAllAdmins" resultType="admin">
+        select * from admin;
+    </select>
+
+    <select id="getAdminByEmail" resultType="admin" parameterType="string">
+        select *
+        from admin where admin_email=#{email};
+    </select>
+
+    <select id="getAdminById" resultType="admin" parameterType="int">
+        select *
+        from admin where admin_id=${id};
+    </select>
+    <insert id="addAdmin" parameterType="admin">
+        insert into admin (admin_name, admin_password, admin_email, admin_phone, admin_avatar)
+        values (#{adminName},#{adminPassword},#{adminEmail},#{adminPhone},#{adminAvatar});
+    </insert>
+    <delete id="deleteAdmin" parameterType="int">
+        delete from admin where admin_id=#{id};
+    </delete>
+
+    <update id="updateAdmin" parameterType="admin">
+        update admin
+        <set>
+            <if test="adminName!=null">
+                admin_name=#{adminName},
+            </if>
+            <if test="adminPassword!=null">
+                admin_password=#{adminPassword},
+            </if>
+            <if test="adminEmail!=null">
+                admin_email=#{adminEmail},
+            </if>
+            <if test="adminPhone!=null">
+                admin_phone=#{adminPhone},
+            </if>
+            <if test="adminAvatar!=null">
+                admin_avatar=#{adminAvatar}
+            </if>
+        </set>
+        where admin_id=#{id};
+    </update>
+
+</mapper>

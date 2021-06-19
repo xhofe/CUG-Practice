@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hh.mapper.GoodsMapper">
+
+    <select id="getAllGoods" resultType="goods">
+        select *
+        from goods;
+    </select>
+
+    <select id="SearchGoods" parameterType="map" resultType="goods">
+<!--        <bind name="pattern" value="'%'+keyword+'%'"/>-->
+<!--        select * from goods-->
+<!--        where goods_name like #{pattern}-->
+        select * from goods
+        where 1 = 1
+        and
+        <foreach collection="keywords" item="item" separator="OR">
+            goods_name like CONCAT('%',#{item},'%')
+        </foreach>
+        <if test="typeId!=null">
+            and type_id = #{typeId}
+        </if>
+        <if test="priceLow!=null and priceHigh!=null">
+            and price between #{priceLow} and #{priceHigh}
+        </if>
+        <if test="secondPriceLow!=null and secondPriceHigh!=null">
+            and second_price between #{secondPriceLow} and #{secondPriceHigh}
+        </if>
+    </select>
+
+    <insert id="addGoods" useGeneratedKeys="true" parameterType="goods" keyProperty="goodsId">
+        insert into goods (goods_name, pop, price, second_price, num, introduce, status, type_id, imgurl)
+        values (#{goodsName},#{pop},#{price},#{secondPrice},#{num},#{introduce},#{status},#{typeId},#{imgurl});
+    </insert>
+
+    <update id="updateGoods" parameterType="goods">
+        update goods
+        <set>
+            <if test="goodsName!=null">
+                goods_name=#{goodsName},
+            </if>
+            <if test="pop!=null">
+                pop=#{pop},
+            </if>
+            <if test="price!=null">
+                price=#{price},
+            </if>
+            <if test="secondPrice!=null">
+                second_price=#{secondPrice},
+            </if>
+            <if test="num!=null">
+                num=#{num},
+            </if>
+            <if test="introduce!=null">
+                introduce=#{introduce},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+            <if test="typeId!=null">
+                type_id=#{typeId},
+            </if>
+            <if test="imgurl!=null">
+                imgurl=#{imgurl}
+            </if>
+        </set>
+        where goods_id=#{goodsId};
+    </update>
+
+    <delete id="deleteGoods" parameterType="int">
+        delete  from goods
+        where goods_id=#{goodsId};
+    </delete>
+
+    <select id="getGoodsByGoodsId" resultType="goods" parameterType="int">
+        select *
+        from goods
+        where goods_id=#{goodsId};
+    </select>
+
+    <select id="getAllType" resultType="type">
+        select *
+        from type;
+    </select>
+
+    <insert id="addType" parameterType="type">
+        insert into type(type_id,type_name)
+        values (#{typeId},#{typeName});
+    </insert>
+
+    <delete id="deleteType" parameterType="int">
+        delete from type
+        where type_id = #{typeId}
+    </delete>
+
+    <update id="updateType" parameterType="type">
+        update type
+        <set>
+            <if test="typeId!=null">
+                type_id=#{typeId},
+            </if>
+            <if test="typeName!=null">
+                type_name=#{typeName}
+            </if>
+        </set>
+        where type_id=#{typeId}
+    </update>
+
+    <select id="getGoodsByTypeId" parameterType="int" resultType="goods">
+        select *
+        from goods
+        where type_id=#{typeId};
+    </select>
+
+    <select id="getGoodsOrderByTop" resultType="goods">
+        select *
+        from goods
+        order by pop;
+    </select>
+</mapper>
