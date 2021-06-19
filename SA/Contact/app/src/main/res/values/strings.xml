@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">个人通讯录</string>
+    <string name="company">公司:</string>
+    <string name="name">姓名:</string>
+    <string name="mobile">手机:</string>
+    <string name="email">邮箱:</string>
+    <string name="qq"> Q Q :</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="contact_edit">修改</string>
+    <string name="contact_create">添加</string>
+    <string name="error_msg">程序错误！</string>
+    <string name="menu_revert">返回</string>
+    <string name="menu_delete">删除</string>
+    <string name="menu_discard">取消</string>
+    <string name="menu_add">添加</string>
+    <string name="menu_edit">编辑</string>
+    <string name="menu_search">查找</string>
+    <string name="call">拨号</string>
+    <string name="message">短信</string>
+</resources>

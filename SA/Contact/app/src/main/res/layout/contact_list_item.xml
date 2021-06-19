@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@drawable/img"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:text="姓名：" android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:textStyle="bold"
+			android:textSize="18px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@android:id/text1" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:textStyle="bold"
+			android:textSize="18px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+	</LinearLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:text="电话：" android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:textStyle="normal"
+			android:textSize="14px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@android:id/text2" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:textStyle="normal"
+			android:textSize="14px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+	</LinearLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:text="公司：" android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:textStyle="normal"
+			android:textSize="14px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/text3" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:textStyle="normal"
+			android:textSize="14px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+	</LinearLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:text=" q q:\t" android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:textStyle="normal"
+			android:textSize="14px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/text4" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:textStyle="normal"
+			android:textSize="14px" android:gravity="center_vertical"
+			android:paddingLeft="10px" android:singleLine="true" />
+	</LinearLayout>
+</LinearLayout>

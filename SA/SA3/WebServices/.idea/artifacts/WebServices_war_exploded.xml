@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WebServices:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebServices_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="WebServices/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WebServices" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="JAX-WS-Apache Axis" />
+          <element id="library" level="project" name="aliyun-java-sdk-core-3.0.0" />
+          <element id="library" level="project" name="api" />
+          <element id="library" level="project" name="httpClient" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

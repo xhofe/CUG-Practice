@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="api">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/api" />
+      <root url="file://$PROJECT_DIR$/lib/ext" />
+      <root url="file://$PROJECT_DIR$/lib/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/ext" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/api" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/ext" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/ext" recursive="false" type="SOURCES" />
+  </library>
+</component>

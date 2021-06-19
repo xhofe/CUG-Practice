@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>阿里云邮件推送</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/SOAP&Rest.js"></script>
+</head>
+<body>
+<div class="container">
+    <br>
+    <h2>阿里云邮件推送</h2>
+    <br>
+    <!-- Nav pills -->
+    <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="pill" href="#send">发送邮件</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#batchSend">批量发送邮件</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#validate">验证邮箱有效</a>
+        </li>
+    </ul>
+    <br>
+    <form>
+        <div class="radio">
+            <label><input type="radio" name="optradio" id="SOAP" class="choose">SOAP</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio" id="Rest" class="choose">Rest</label>
+        </div>
+    </form>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="send" class="container tab-pane active"><br>
+            <h3>发送邮件</h3>
+            <br>
+            <div>
+                <label for="name">这里输入要发送的邮箱:</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Email" id="name" name="email">
+                    <div class="input-group-append">
+                        <span class="input-group-text">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="example.com" id="domain" name="email">
+                </div>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label for="text">这里输入要发送的内容:</label>
+                    <textarea class="form-control" rows="5" id="text"></textarea>
+                </div>
+            </form>
+            <button type="button" class="btn btn-success" id="ok1">发送</button>
+            <br>
+            <br id="br1">
+        </div>
+        <div id="batchSend" class="container tab-pane fade"><br>
+            <h3>批量发送邮件</h3>
+            <br>
+            <div id="mail1">
+                <label for="name1">这里输入要发送的邮箱:</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Email" id="name1" name="email">
+                    <div class="input-group-append">
+                        <span class="input-group-text">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="example.com" id="domain1" name="email">
+                    <button type="button" class="btn btn-warning deleteMail" id="delete1">❎</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info" id="addMail">增加邮箱</button>
+            <br>
+            <br>
+            <form role="form">
+                <div class="form-group">
+                    <label for="text1">这里输入要发送的内容:</label>
+                    <textarea class="form-control" rows="5" id="text1"></textarea>
+                </div>
+            </form>
+            <button type="button" class="btn btn-success" id="ok2">发送</button>
+            <br>
+            <br id="br2">
+        </div>
+        <div id="validate" class="container tab-pane fade"><br>
+            <h3>验证邮箱有效</h3>
+            <div>
+                <label for="name1">这里输入要验证的邮箱:</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Email" id="email" name="email">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" id="ok3">确定</button>
+            <br>
+            <br id="br3">
+        </div>
+    </div>
+</div>
+</body>
+</html>

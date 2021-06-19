@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebServices:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebServices_war</output-path>
+    <root id="archive" name="WebServices_war.war">
+      <element id="artifact" artifact-name="WebServices:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="httpClient" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

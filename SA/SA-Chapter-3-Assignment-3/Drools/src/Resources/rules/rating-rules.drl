@@ -1,0 +1,82 @@
+package rules
+dialect  "mvel"
+import Rating.Grade
+rule "A"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=90)
+    then
+        $s.setGrade("A");
+end
+
+rule "B+"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=87&&score<=89)
+    then
+        $s.setGrade("B+");
+end
+
+rule "B"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=80&&score<=86)
+    then
+        $s.setGrade("B");
+end
+
+rule "C+"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=77&&score<=79)
+    then
+        $s.setGrade("C+");
+end
+
+rule "C"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=70&&score<=76)
+    then
+        $s.setGrade("C");
+end
+
+rule "D+"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=67&&score<=69)
+    then
+        $s.setGrade("D+");
+end
+
+rule "D"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score>=60&&score<=66)
+    then
+        $s.setGrade("D");
+end
+
+rule "F"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $s:Grade(score<60)
+    then
+        $s.setGrade("F");
+end

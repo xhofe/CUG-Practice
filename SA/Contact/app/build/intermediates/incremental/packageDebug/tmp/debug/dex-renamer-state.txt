@@ -1,0 +1,4 @@
+#Tue Oct 15 23:13:15 GMT+08:00 2019
+base.0=H\:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,118 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ambow.contact"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-permission android:name="android.permission.CALL_PHONE" />
+7-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:6:5-68
+7-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:6:22-66
+8
+9    <application
+9-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:7:5-47:19
+10        android:debuggable="true"
+11        android:icon="@drawable/icon"
+11-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:7:18-47
+12        android:label="@string/app_name"
+12-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:7:48-80
+13        android:testOnly="true" >
+14        <provider
+14-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:8:7-9:63
+15            android:name="com.ambow.contact.ContactsProvider"
+15-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:8:17-48
+16            android:authorities="com.ambow.provider.contact" />
+16-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:9:13-61
+17
+18        <activity
+18-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:11:9-29:20
+19            android:name="com.ambow.contact.Contacts"
+19-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:11:19-43
+20            android:label="@string/app_name" >
+20-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:12:19-51
+21            <intent-filter>
+21-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:13:13-16:29
+22                <action android:name="android.intent.action.MAIN" />
+22-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:14:17-69
+22-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:14:25-66
+23
+24                <category android:name="android.intent.category.LAUNCHER" />
+24-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:15:17-77
+24-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:15:27-74
+25            </intent-filter>
+26            <intent-filter>
+26-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:17:13-23:29
+27                <action android:name="android.intent.action.VIEW" />
+27-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:18:17-69
+27-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:18:25-66
+28                <action android:name="android.intent.action.EDIT" />
+28-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:19:17-69
+28-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:19:25-66
+29                <action android:name="android.intent.action.PICK" />
+29-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:20:17-69
+29-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:20:25-66
+30
+31                <category android:name="android.intent.category.DEFAULT" />
+31-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:17-76
+31-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:27-73
+32
+33                <data android:mimeType="vnd.android.cursor.dir/vnd.ambow.contacts" />
+33-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:17-86
+33-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:23-83
+34            </intent-filter>
+35            <intent-filter>
+35-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:24:13-28:29
+36                <action android:name="android.intent.action.GET_CONTENT" />
+36-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:25:17-76
+36-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:25:25-73
+37
+38                <category android:name="android.intent.category.DEFAULT" />
+38-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:17-76
+38-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:27-73
+39
+40                <data android:mimeType="vnd.android.cursor.item/vnd.ambow.contacts" />
+40-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:17-86
+40-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:23-83
+41            </intent-filter>
+42        </activity>
+43        <activity
+43-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:31:9-46:20
+44            android:name="com.ambow.contact.ContactEditor"
+44-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:31:19-48
+45            android:label="@string/app_name" >
+45-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:32:19-51
+46            <intent-filter android:label="@string/menu_edit" >
+46-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:33:13-38:29
+46-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:33:28-61
+47                <action android:name="android.intent.action.VIEW" />
+47-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:18:17-69
+47-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:18:25-66
+48                <action android:name="android.intent.action.EDIT" />
+48-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:19:17-69
+48-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:19:25-66
+49
+50                <category android:name="android.intent.category.DEFAULT" />
+50-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:17-76
+50-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:27-73
+51
+52                <data android:mimeType="vnd.android.cursor.item/vnd.ambow.contacts" />
+52-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:17-86
+52-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:23-83
+53            </intent-filter>
+54            <intent-filter>
+54-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:40:13-44:29
+55                <action android:name="android.intent.action.INSERT" />
+55-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:41:17-71
+55-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:41:25-68
+56
+57                <category android:name="android.intent.category.DEFAULT" />
+57-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:17-76
+57-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:21:27-73
+58
+59                <data android:mimeType="vnd.android.cursor.dir/vnd.ambow.contacts" />
+59-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:17-86
+59-->H:\XHF\Code\Java\examples\Contact\app\src\main\AndroidManifest.xml:22:23-83
+60            </intent-filter>
+61        </activity>
+62    </application>
+63
+64</manifest>

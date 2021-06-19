@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\res\\merged\\debug\\layout_contact_list.xml.flat",
+        "source": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\src\\main\\res\\layout\\contact_list.xml"
+    },
+    {
+        "merged": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\res\\merged\\debug\\layout_alert_enter.xml.flat",
+        "source": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\src\\main\\res\\layout\\alert_enter.xml"
+    },
+    {
+        "merged": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\res\\merged\\debug\\drawable_img.jpg.flat",
+        "source": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\src\\main\\res\\drawable\\img.jpg"
+    },
+    {
+        "merged": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\res\\merged\\debug\\layout_contact_list_item.xml.flat",
+        "source": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\src\\main\\res\\layout\\contact_list_item.xml"
+    },
+    {
+        "merged": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon.png.flat",
+        "source": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\src\\main\\res\\drawable\\icon.png"
+    },
+    {
+        "merged": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\build\\intermediates\\res\\merged\\debug\\layout_contact_editor.xml.flat",
+        "source": "H:\\XHF\\Code\\Java\\examples\\Contact\\app\\src\\main\\res\\layout\\contact_editor.xml"
+    }
+]
