@@ -1,0 +1,644 @@
+{
+  "test1": {
+    "args": {
+      "class_": "LuxuryFirstClass",
+      "start": "cny",
+      "area": "domestic",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        },
+        {
+          "id": 1,
+          "length": 90,
+          "width": 50,
+          "height": 30,
+          "weight": 26,
+          "type": "special1"
+        },
+        {
+          "id": 2,
+          "length": 60,
+          "width": 20,
+          "height": 10,
+          "weight": 8,
+          "type": "special2"
+        },
+        {
+          "id": 3,
+          "length": 10,
+          "width": 6,
+          "height": 4,
+          "weight": 5,
+          "type": "special3"
+        }
+      ]
+    }
+  },
+  "test2": {
+    "args": {
+      "class_": "FirstClass",
+      "start": "eur",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "baby",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        },
+        {
+          "id": 1,
+          "length": 90,
+          "width": 50,
+          "height": 30,
+          "weight": 26,
+          "type": "special1"
+        },
+        {
+          "id": 2,
+          "length": 60,
+          "width": 20,
+          "height": 10,
+          "weight": 8,
+          "type": "special2"
+        },
+        {
+          "id": 3,
+          "length": 10,
+          "width": 6,
+          "height": 4,
+          "weight": 5,
+          "type": "special3"
+        }
+      ]
+    }
+  },
+  "test3": {
+    "args": {
+      "class_": "BusinessClass",
+      "start": "cad",
+      "area": "area2",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        },
+        {
+          "id": 1,
+          "length": 90,
+          "width": 50,
+          "height": 30,
+          "weight": 26,
+          "type": "special1"
+        },
+        {
+          "id": 2,
+          "length": 60,
+          "width": 20,
+          "height": 10,
+          "weight": 8,
+          "type": "special2"
+        },
+        {
+          "id": 3,
+          "length": 10,
+          "width": 6,
+          "height": 4,
+          "weight": 5,
+          "type": "special3"
+        }
+      ]
+    }
+  },
+  "test4": {
+    "args": {
+      "class_": "EnjoyEconomyClass",
+      "start": "usd",
+      "area": "area3",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        },
+        {
+          "id": 1,
+          "length": 90,
+          "width": 50,
+          "height": 30,
+          "weight": 26,
+          "type": "special1"
+        },
+        {
+          "id": 2,
+          "length": 60,
+          "width": 20,
+          "height": 10,
+          "weight": 8,
+          "type": "special2"
+        },
+        {
+          "id": 3,
+          "length": 10,
+          "width": 6,
+          "height": 4,
+          "weight": 5,
+          "type": "special3"
+        }
+      ]
+    }
+  },
+  "test5": {
+    "args": {
+      "class_": "SuperEconomyClass",
+      "start": "cny",
+      "area": "area4",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        },
+        {
+          "id": 1,
+          "length": 90,
+          "width": 50,
+          "height": 30,
+          "weight": 26,
+          "type": "special1"
+        },
+        {
+          "id": 2,
+          "length": 60,
+          "width": 20,
+          "height": 10,
+          "weight": 8,
+          "type": "special2"
+        },
+        {
+          "id": 3,
+          "length": 10,
+          "width": 6,
+          "height": 4,
+          "weight": 5,
+          "type": "special3"
+        }
+      ]
+    }
+  },
+  "test6": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area5",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        },
+        {
+          "id": 1,
+          "length": 90,
+          "width": 50,
+          "height": 30,
+          "weight": 26,
+          "type": "special1"
+        },
+        {
+          "id": 2,
+          "length": 60,
+          "width": 20,
+          "height": 10,
+          "weight": 8,
+          "type": "special2"
+        },
+        {
+          "id": 3,
+          "length": 10,
+          "width": 6,
+          "height": 4,
+          "weight": 5,
+          "type": "special3"
+        }
+      ]
+    }
+  },
+  "test7": {
+    "args": {
+      "start": "cny",
+      "area": "area5",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test8": {
+    "args": {
+      "class_": "hhh",
+      "start": "cny",
+      "area": "area5",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test9": {
+    "args": {
+      "class_": "EconomyClass",
+      "area": "area5",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test10": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "hhh",
+      "area": "area5",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test11": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test12": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "hhh",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test13": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test14": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": -1000,
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test15": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": "hhh",
+      "passenger": "common",
+      "baggages": []
+    }
+  },
+  "test16": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "baggages": []
+    }
+  },
+  "test17": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "hhh",
+      "baggages": []
+    }
+  },
+  "test18": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test19": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test20": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": -100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test21": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": "hhh",
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test22": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test23": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": -60,
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test24": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": "hhh",
+          "height": 40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test25": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test26": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": -40,
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test27": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": "hhh",
+          "weight": 23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test28": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test29": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": -23,
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test30": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": "hhh",
+          "type": "usual"
+        }
+      ]
+    }
+  },
+  "test31": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23
+        }
+      ]
+    }
+  },
+  "test32": {
+    "args": {
+      "class_": "EconomyClass",
+      "start": "cny",
+      "area": "area1",
+      "fare": 1000,
+      "passenger": "common",
+      "baggages": [
+        {
+          "id": 0,
+          "length": 100,
+          "width": 60,
+          "height": 40,
+          "weight": 23,
+          "type": "hhh"
+        }
+      ]
+    }
+  }
+}

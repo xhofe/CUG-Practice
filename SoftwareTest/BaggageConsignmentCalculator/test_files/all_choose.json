@@ -1,0 +1,75 @@
+{
+  "class_": [
+    "LuxuryFirstClass",
+    "FirstClass",
+    "BusinessClass",
+    "EnjoyEconomyClass",
+    "SuperEconomyClass",
+    "EconomyClass"
+  ],
+  "start": [
+    "cny",
+    "eur",
+    "cad",
+    "usd"
+  ],
+  "area": [
+    "domestic",
+    "area1",
+    "area2",
+    "area3",
+    "area4",
+    "area5"
+  ],
+  "fare": [
+    1000
+  ],
+  "passenger": [
+    "common",
+    "baby"
+  ],
+  "baggages": [
+    [
+      {
+        "id": 0,
+        "length": 100,
+        "width": 60,
+        "height": 40,
+        "weight": 23,
+        "type": "usual"
+      },
+      {
+        "id": 1,
+        "length": 90,
+        "width": 50,
+        "height": 30,
+        "weight": 26,
+        "type": "usual"
+      },
+      {
+        "id": 2,
+        "length": 60,
+        "width": 20,
+        "height": 10,
+        "weight": 8,
+        "type": "usual"
+      },
+      {
+        "id": 3,
+        "length": 10,
+        "width": 6,
+        "height": 4,
+        "weight": 5,
+        "type": "usual"
+      },
+      {
+        "id": 4,
+        "length": 100,
+        "width": 60,
+        "height": 40,
+        "weight": 23,
+        "type": "special2"
+      }
+    ]
+  ]
+}
