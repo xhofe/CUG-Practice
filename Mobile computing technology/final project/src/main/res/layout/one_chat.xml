@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.github.bassaer.chatmessageview.view.MessageView
+        android:id="@+id/message_view_one_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/input_text_one_chat"
+        android:layout_marginBottom="13dp" />
+
+    <Button
+        android:id="@+id/send_button_one_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="6dp"
+        android:layout_toEndOf="@+id/input_text_one_chat"
+        android:text="发送" />
+
+    <EditText
+        android:id="@+id/input_text_one_chat"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="请输入..." />
+</RelativeLayout>
