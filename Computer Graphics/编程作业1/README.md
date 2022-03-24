@@ -89,13 +89,13 @@
    $$
    计算完成后再按照格式写入文件中即可。
    
-   ![output01_bezier](.\img\output01_bezier.png)
+   ![output01_bezier](./img/output01_bezier.png)
    
-   ![output01_bspline](.\img\output01_bspline.png)
+   ![output01_bspline](./img/output01_bspline.png)
    
-   ![output02_bezier](.\img\output02_bezier.png)
+   ![output02_bezier](./img/output02_bezier.png)
    
-   ![output02_bspline](.\img\output02_bspline.png)
+   ![output02_bspline](./img/output02_bspline.png)
 
 #### 第四步 Bezier 和 BSpline 曲线一般化
 
@@ -103,11 +103,11 @@
 
 2. 然后就是调用`paintBezier`和`paintBSpline`了，需要确定每段的起始点，Bezier为3*i(i=0->(num-1)/3-1)，BSpline为i(i=0->num-4)。
 
-   ![spline03_bezier](.\img\spline03_bezier.png)
+   ![spline03_bezier](./img/spline03_bezier.png)
 
-   ![spline04_bspline](.\img\spline04_bspline.png)
+   ![spline04_bspline](./img/spline04_bspline.png)
 
-   ![spline05_bspline_dups](.\img\spline05_bspline_dups.png)
+   ![spline05_bspline_dups](./img/spline05_bspline_dups.png)
 
 #### 第五步 实现控制点编辑函数
 
@@ -117,7 +117,7 @@
 
 3. 找到了问题，是没有更新map的value，C++的map插入不会覆盖掉原来的值，所以我选择先删除掉再插入；
 
-   ![action](.\img\action.gif)
+   ![action](./img/action.gif)
 
 #### 第六步 实现SurfaceOfRevolution类
 
@@ -140,17 +140,17 @@
 
    > 给出的光线追踪软件由于“找不到入口点无法使用（我的库问题？？）但是win10自带一个3d查看器也可以看所以obj文件均用3d查看器打开。
 
-![spline06_torus](.\img\spline06_torus.png)
+![spline06_torus](./img/spline06_torus.png)
 
-<img src=".\img\torus_low.png" alt="torus_low" style="zoom:50%;" />
+<img src="./img/torus_low.png" alt="torus_low" style="zoom:50%;" />
 
-<img src=".\img\torus_high.png" alt="torus_high" style="zoom:50%;" />
+<img src="./img/torus_high.png" alt="torus_high" style="zoom:50%;" />
 
-![spline07_vase](.\img\spline07_vase.png)
+![spline07_vase](./img/spline07_vase.png)
 
-<img src=".\img\vase_high.png" alt="vase_high" style="zoom: 50%;" />
+<img src="./img/vase_high.png" alt="vase_high" style="zoom: 50%;" />
 
-<img src=".\img\vase_low.png" alt="vase_low" style="zoom:50%;" />
+<img src="./img/vase_low.png" alt="vase_low" style="zoom:50%;" />
 
 #### 第七步 实现16个控制点的4x4 Bezier块
 
@@ -169,23 +169,23 @@
 
 3. 其他的一些函数参考之前的类实现。
 
-   <img src=".\img\patch_high.png" alt="patch_high" style="zoom:50%;" />
+   <img src="./img/patch_high.png" alt="patch_high" style="zoom:50%;" />
 
-   <img src=".\img\patch_low.png" alt="patch_low" style="zoom:50%;" />
+   <img src="./img/patch_low.png" alt="patch_low" style="zoom:50%;" />
 
-   <img src=".\img\patch_med.png" alt="patch_med" style="zoom:50%;" />
+   <img src="./img/patch_med.png" alt="patch_med" style="zoom:50%;" />
 
-   ![spline08_bezier_patch](.\img\spline08_bezier_patch.png)
+   ![spline08_bezier_patch](./img/spline08_bezier_patch.png)
 
 ### TeaPot部分
 
-![spline09_teapot](.\img\spline09_teapot.png)
+![spline09_teapot](./img/spline09_teapot.png)
 
-<img src=".\img\teapot_high.png" alt="teapot_high" style="zoom:50%;" />
+<img src="./img/teapot_high.png" alt="teapot_high" style="zoom:50%;" />
 
-<img src=".\img\teapot_low.png" alt="teapot_low" style="zoom:50%;" />
+<img src="./img/teapot_low.png" alt="teapot_low" style="zoom:50%;" />
 
-<img src=".\img\vase_very_high.png" alt="vase_very_high" style="zoom:50%;" />
+<img src="./img/vase_very_high.png" alt="vase_very_high" style="zoom:50%;" />
 
 #### 附加分的实现 >4个控制点的曲线转换
 
